@@ -13,9 +13,11 @@ import pe.edu.cibertec.appventascibertec.service.IProductService;
 
 import java.util.List;
 
+
+@AllArgsConstructor
 @Controller
 @RequestMapping("/product")
-@AllArgsConstructor
+
 public class ProductController {
     private IProductService iProductService;
 
@@ -29,6 +31,7 @@ public class ProductController {
     public List<Product> listProducts(){
         return iProductService.listProducts();
     }
+
     @PostMapping("/register")
     @ResponseBody
     public ProductResponse registerProduct(@RequestBody ProductRequest productRequest){
@@ -36,7 +39,7 @@ public class ProductController {
         boolean respuesta = true;
         try{
             Product product = new Product();
-            if (productRequest.getProductid() >0){
+            if (productRequest.getProductid() > 0){
                 product.setProductid(productRequest.getProductid());
             }
             product.setProductname(productRequest.getProductname());
