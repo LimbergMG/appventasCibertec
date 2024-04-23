@@ -4,11 +4,34 @@ $(document).on("click","#btnagregar", function(){
     $("#hddprodcod").val("0");
 
     listarCboCategorySupplier(0, 0);
-
+    $("#switchproducto").hide();
+    $("#cbodiscontinued").prop("checked", false);
     $("#modalproduct").modal("show");
 
 
 })
+
+$(document).on("click", "#btnguardar", function(){
+$ajax.({
+    type:"POST",
+    url:"/product/register",
+    contentType: "/applicaction/json",
+    data: JSON.stringify({
+        productid: $("#hddprodcod").val(),
+        productname: $("#txtnomproduct").val(),
+        unitprice: $("#txtunitpriceproduct").val(),
+        categoryid: $("#cbocategory").val(),
+        supplierid: $("#cbosupplier").val(),
+        discontinued: $("#cbodiscontinued").prop("checked"),
+    }),
+    success: function(resultado){
+        alert(resultado.mensaje);
+    }
+});
+$("#modalproduct").modal("hide");
+
+});
+
 
 $(document).on("click",".btnactualizar",function(){
     $("#txtnomproduct").val($(this).attr("data-prodname"));
@@ -18,6 +41,11 @@ $(document).on("click",".btnactualizar",function(){
      $("#cbosupplier").empty();
     listarCboCategorySupplier($(this).attr("data-prodcateg"),
                             $(this).attr("data-prodsupp"));
+     $("#switchproducto").show();
+     if($(this).attr("data-proddiscont") == "true"){
+     $("#cbodiscontinued").prop("checked", true);
+     }else
+     $("#cbodiscontinued").prop("checked", false);
     $("#modalproduct").modal("show");
 })
 function listarCboCategorySupplier(idCategory, idSupplier){
