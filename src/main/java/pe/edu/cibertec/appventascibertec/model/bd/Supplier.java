@@ -14,8 +14,8 @@ public class Supplier {
     private Integer supplierid;
     @Column(name = "companyname")
     private String companyname;
-    @Column(name = "concatcname")
-    private String concatcname;
+    @Column(name = "contactname")
+    private String contactname;
     @Column(name = "address")
     private String address;
     @Column(name = "city")
