@@ -25,6 +25,10 @@ public class CategoryController {
                 iCategoryService.listarCategorias());
         return "backoffice/category/frmcategory";
     }
+
+
+
+
     @GetMapping("/get")
     @ResponseBody
     public List<Category> listCategory(){
