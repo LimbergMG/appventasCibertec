@@ -12,24 +12,23 @@ $(document).on("click","#btnagregar", function(){
 })
 
 $(document).on("click", "#btnguardar", function(){
-$ajax.({
+$.ajax({
     type:"POST",
     url:"/product/register",
-    contentType: "/applicaction/json",
+    contentType: "application/json",
     data: JSON.stringify({
         productid: $("#hddprodcod").val(),
         productname: $("#txtnomproduct").val(),
         unitprice: $("#txtunitpriceproduct").val(),
         categoryid: $("#cbocategory").val(),
         supplierid: $("#cbosupplier").val(),
-        discontinued: $("#cbodiscontinued").prop("checked"),
+        discontinued: $("#cbodiscontinued").prop("checked")
     }),
     success: function(resultado){
         alert(resultado.mensaje);
     }
 });
 $("#modalproduct").modal("hide");
-
 });
 
 
