@@ -10,4 +10,6 @@ public interface IUsuarioService {
     Usuario guardarUsuario(Usuario usuario);
     List<Usuario> listarUsuarios();
     Usuario obtenerUsuarioxId(int id);
+    void actualizarUsuario(Usuario usuario);
+
 }
